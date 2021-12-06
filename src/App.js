@@ -7,7 +7,6 @@ import { Heading } from '@chakra-ui/react'
 
 function App() {
   const [data, setData] = useState();
-  // const [isChartOpen, setIsChartOpen] = useState(false)
   const [chartedRune, setChartedRune] = useState('jah') // string
   async function fetchData() {
     const response = await fetchLastAmount(24)
@@ -26,11 +25,19 @@ function App() {
   if (!data) return (<div>Loading</div>)
 
   return (
-    <div className="App" style={{ display: 'flex', alignItems: 'center', flexDirection: 'column', width: '100vw', height: '100vh' }}>
+    <div className="App" style={{
+      display: 'flex',
+      alignItems: 'center', flexDirection: 'column', width: '100vw', height: '100vh',
+      padding: '20px'
+    }}>
       <Heading>JSP Rune Prices</Heading>
-      <div style={{ display: 'flex', flexDirection: 'row', width: '100vw', height: '100%' }}>
-        {data && (<Prices data={[data[0], data[1]]} onRowClick={onRowClick} />)}
-        {data && <Chart data={data} chartedRune={chartedRune} />}
+      <div style={{ display: 'flex', flexDirection: 'row', width: '100%', height: '100%' }}>
+        <div style={{ width: '40%', height: '90%' }}>
+          {data && (<Prices data={[data[0], data[1]]} onRowClick={onRowClick} />)}
+        </div>
+        <div style={{ width: '90%', height: '100%', padding: '10px' }}>
+          {data && <Chart data={data} chartedRune={chartedRune} />}
+        </div>
       </div>
     </div>
   );

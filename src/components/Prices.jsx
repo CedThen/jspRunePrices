@@ -17,8 +17,8 @@ const Prices = ({ data, onRowClick }) => {
   const { runeprices: prevRuneprices } = data[1]
 
   return (
-    <Box w="40vw" display="flex" alignItems="center" justifyContent="center" p="5px">
-      <Table variant="striped" colorScheme="red">
+    <Box >
+      <Table variant="striped" colorScheme="teal">
         <TableCaption>Last updated at {createdAt}</TableCaption>
         <Thead>
           <Tr>
@@ -33,10 +33,10 @@ const Prices = ({ data, onRowClick }) => {
             let bidColor = runeprices[rune].bidAvg > prevRuneprices[rune].bidAvg ? 'green' : 'red'
             let askColor = runeprices[rune].askAvg > prevRuneprices[rune].askAvg ? 'green' : 'red'
             return (
-              <Tr onClick={() => onRowClick(rune)}>
+              <Tr onClick={() => onRowClick(rune)} _hover={{ background: 'blue' }}>
                 <Th>{rune}</Th>
-                <Th isNumeric color={bidColor}>{toFixed(runeprices[rune].bidAvg, decimalPlaces)}fg</Th>
-                <Th isNumeric color={askColor}>{toFixed(runeprices[rune].askAvg, decimalPlaces)}fg</Th>
+                <Th isNumeric color={bidColor} >{toFixed(runeprices[rune].bidAvg, decimalPlaces)}<span> fg</span></Th>
+                <Th isNumeric color={askColor}>{toFixed(runeprices[rune].askAvg, decimalPlaces)}</Th>
                 <Th isNumeric>{runeprices[rune].count}</Th>
               </Tr>
             )
