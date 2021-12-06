@@ -35,21 +35,25 @@ const options = {
   },
 };
 
-function Chart({ data, chartedRune }) {
+function Chart({ data, chartedRune, }) {
   const d = splitRunes(data)
-  const labels = extractTimeLabels(data)
+  const labels = extractTimeLabels(data).reverse()
   const chartData = {
     labels,
     datasets: [
       {
         label: chartedRune,
-        data: d[chartedRune],
+        data: d[chartedRune].reverse(),
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       }
     ]
   }
-  return <Line data={chartData} options={options} />;
+  return (
+    // <div height="100%" width="100%">
+    <Line data={chartData} options={options} />
+    // </div >);
+  )
 }
 
 export default Chart
