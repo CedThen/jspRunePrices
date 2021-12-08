@@ -19,5 +19,12 @@ ReactDOM.render(
   about section - methodology, when last updated was
   refresh button somewhere
   use rune pictures next to runes
+  apply theme throughout app
 
+  features
+    make chart smarter
+    add some buffer to chart so points aren't at the min and max of chart
+    select timeframes for charting
+      will need to review how data is retrieved from db for this
+    add skeleton for loading in
 */

@@ -2,7 +2,7 @@ import { fetchLastAmount } from './apiRequests/'
 import React, { useEffect, useState } from 'react'
 import Prices from './components/Prices'
 import Chart from './components/Chart'
-import { Heading, Box } from '@chakra-ui/react'
+import { Heading, Box, Grid, GridItem } from '@chakra-ui/react'
 
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
   if (!data) return (<div>Loading</div>)
 
   return (
-    <Box className="App"
+    <Box
       style={{
         display: 'flex',
         alignItems: 'center',
@@ -29,16 +29,16 @@ function App() {
         width: '100vw',
         height: '100vh',
         padding: '20px',
-      }}>
-      <Heading >JSP Rune Prices</Heading>
-      <Box className="body" style={{ display: 'flex', flexDirection: 'row', width: '100%', height: '100%' }}>
-        <Box style={{ width: '40%', height: '90%' }}>
+      }} backgroundColor='brand.grey'>
+      <Heading size="3xl" padding="20px" color="brand.white">JSP Rune Prices</Heading>
+      <Grid className="body" gridTemplateColumns="2fr 3fr" h="100%" w="100%" gap={5}>
+        <GridItem style={{ width: '100%', height: '100%' }}>
           {data && (<Prices data={[data[0], data[1]]} onRowClick={(rune) => setChartedRune(rune)} />)}
-        </Box>
-        <Box style={{ width: '90%', height: '100%', padding: '10px' }}>
+        </GridItem>
+        <GridItem style={{ width: '100%', height: '100%', padding: '10px' }}>
           {data && <Chart data={data} chartedRune={chartedRune} />}
-        </Box>
-      </Box>
+        </GridItem>
+      </Grid>
     </Box>
   );
 }
