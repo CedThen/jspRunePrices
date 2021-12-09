@@ -3,9 +3,9 @@ import { toFixed } from '../services/helperFx'
 import React from 'react'
 const decimalPlaces = 2
 
-const PriceCell = ({ children, ...restProps }) => <Td fontFamily="ExocetBold" fontSize="md" border='1px' borderColor='white'><Text {...restProps} >{children}</Text></Td>
+const PriceCell = ({ children, ...restProps }) => <Td fontFamily="ExocetBold" border="0.5px" ><Text {...restProps} fontSize="xl" >{children}</Text></Td>
 
-const PriceRow = ({ runeprices, rune, prevRuneprices, onRowClick, widths }) => {
+const PriceRow = ({ runeprices, rune, prevRuneprices, onRowClick, isSelected }) => {
   let bidDiff = runeprices[rune].bidAvg - prevRuneprices[rune].bidAvg
   let askDiff = runeprices[rune].askAvg - prevRuneprices[rune].askAvg
   let bidColor = determineColor(bidDiff)
@@ -16,9 +16,9 @@ const PriceRow = ({ runeprices, rune, prevRuneprices, onRowClick, widths }) => {
   let changeColor = determineColor(percentChange)
 
   return (
-    <Tr onClick={() => onRowClick(rune)} >
+    <Tr onClick={() => onRowClick(rune)} _hover={{ background: 'brand.lightGrey' }} backgroundColor={isSelected ? 'brand.lightGrey' : 'brand.grey'}>
       <PriceCell w='100%' color="brand.orange">{rune}</PriceCell>
-      <PriceCell color={bidColor} textAlign='right'>{toFixed(runeprices[rune].bidAvg, decimalPlaces)}<span> fg</span></PriceCell>
+      <PriceCell color={bidColor} textAlign='right'>{toFixed(runeprices[rune].bidAvg, decimalPlaces)}<span></span></PriceCell>
       <PriceCell color={askColor} textAlign='right'>{toFixed(runeprices[rune].askAvg, decimalPlaces)}</PriceCell>
       <PriceCell color={changeColor} textAlign='right'>{toFixed(percentChange * 100, decimalPlaces)}%</PriceCell>
       <PriceCell color="brand.white" textAlign='right'>{runeprices[rune].count}</PriceCell>

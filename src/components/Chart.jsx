@@ -11,6 +11,8 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { extractTimeLabels, splitRunes } from '../services/helperFx'
+import { colors } from '../themes/colors'
+import { Box } from '@chakra-ui/react'
 
 ChartJS.register(
   CategoryScale,
@@ -22,18 +24,63 @@ ChartJS.register(
   Legend
 );
 
-const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'top'
+
+
+const options = (title) => {
+  return {
+    responsive: true,
+    plugins: {
+      legend: {
+        display: false,
+      },
+      tooltip: {
+        titleColor: 'white',
+        titleFont: {
+          family: "Exocet",
+          size: 15
+        },
+
+        bodyColor: colors.d2Orange,
+        bodyFont: {
+          family: "Exocet",
+          size: 15
+        }
+      },
+      title: {
+        display: true,
+        text: title,
+        color: colors.d2Orange,
+        font: {
+          family: "Exocet",
+          size: 40
+        }
+      },
     },
-    title: {
-      display: true,
-      text: 'Chart.js Line Chart',
+    scales: {
+      yAxes: {
+        ticks: {
+          color: 'white',
+          font: {
+            family: "Exocet",
+            size: 15
+          }
+        }
+      },
+      xAxes: {
+        ticks: {
+          color: 'white',
+          font: {
+            family: "Exocet",
+            size: 15
+          }
+        }
+      }
     },
-  },
-};
+
+
+    maintainAspectRatio: false
+  };
+}
 
 function Chart({ data, chartedRune, }) {
   const d = splitRunes(data)
@@ -44,15 +91,16 @@ function Chart({ data, chartedRune, }) {
       {
         label: chartedRune,
         data: d[chartedRune].reverse(),
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        borderColor: colors.lineBorder,
+        backgroundColor: colors.lineBackground,
       }
-    ]
+    ],
+
   }
   return (
-    // <div height="100%" width="100%">
-    <Line data={chartData} options={options} />
-    // </div >);
+    // <Box w="100%" h="100%" p="5px">
+    <Line data={chartData} options={options(chartedRune)} width="90%" height="80%" />
+    // </Box>
   )
 }
 

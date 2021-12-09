@@ -16,5 +16,9 @@ export function splitRunes(data) {
 }
 
 export function extractTimeLabels(data) {
-  return data.map(d => new Date(d.createdAt).toLocaleTimeString())
+  return data.map(d => displayLocalTime(d.createdAt))
+}
+
+export function displayLocalTime(time) {
+  return new Date(time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
 }

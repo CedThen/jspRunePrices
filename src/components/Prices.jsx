@@ -10,18 +10,19 @@ import {
   Text
 } from '@chakra-ui/react'
 import PriceRow from './PriceRow'
+import { displayLocalTime } from '../services/helperFx'
 
 const HeaderCell = ({ children, ...restProps }) =>
-  (<Th width="25%" fontFamily="ExocetBold" fontSize="lg" color="brand.white" fontWeight="light" {...restProps}><Text textAlign="center">{children}</Text></Th>)
+  (<Th width="25%" fontFamily="ExocetBold" fontSize="lg" color="brand.white" fontWeight="light" {...restProps}><Text fontSize="xl" textAlign="center">{children}</Text></Th>)
 
-const Prices = ({ data, onRowClick }) => {
+const Prices = ({ data, onRowClick, chartedRune }) => {
   const { runeprices, createdAt } = data[0]
   const { runeprices: prevRuneprices } = data[1]
-  const widths = ['10%', '25%', '25%', '25%', '15%']
+  const widths = ['12%', '25%', '25%', '25%', '13%']
   return (
     <Box >
-      <Table >
-        <TableCaption>Last updated at {createdAt}</TableCaption>
+      <Table variant="simple">
+        <TableCaption>Updates once an hour. Last updated at {displayLocalTime(createdAt)}</TableCaption>
         <Thead>
           <Tr >
             <HeaderCell w={widths[0]} border='1px' borderColor='white'>Rune</HeaderCell>
@@ -32,13 +33,16 @@ const Prices = ({ data, onRowClick }) => {
           </Tr>
         </Thead>
         <Tbody>
-          {Object.keys(runeprices).map(rune =>
-          (<PriceRow
-            widths={widths}
-            runeprices={runeprices}
-            rune={rune}
-            prevRuneprices={prevRuneprices}
-            onRowClick={onRowClick} />))}
+          {Object.keys(runeprices).map(rune => {
+            let isSelected = rune === chartedRune
+            return (<PriceRow
+              isSelected={isSelected}
+              widths={widths}
+              runeprices={runeprices}
+              rune={rune}
+              prevRuneprices={prevRuneprices}
+              onRowClick={onRowClick} />)
+          })}
         </Tbody>
       </Table>
     </Box>
