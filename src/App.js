@@ -1,46 +1,17 @@
-import { fetchLastAmount } from './apiRequests/'
-import React, { useEffect, useState } from 'react'
-import Prices from './components/Prices'
-import Chart from './components/Chart'
-import { Heading, Box, Grid, GridItem, Text, Center } from '@chakra-ui/react'
+import React from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import Home from './components/Home'
+import About from './components/About'
 
-const baseStyling = {
-  display: 'flex',
-  alignItems: 'center',
-  flexDirection: 'column',
-  width: '100vw',
-  height: '100vh',
-  paddingLeft: '20px',
-  paddingRight: '20px'
-}
 
 function App() {
-  const [data, setData] = useState();
-  const [chartedRune, setChartedRune] = useState('ber') // string
-
-  async function fetchData() {
-    const response = await fetchLastAmount(24)
-    setData(response)
-  }
-  useEffect(() => {
-    fetchData()
-  }, [])
-
-
-  if (!data) return (<div>Loading</div>)
-
   return (
-    <Box style={baseStyling} backgroundColor='brand.grey'>
-      <Heading size="3xl" padding="20px" color="brand.white">JSP <Text as="span" color='brand.orange'>Rune</Text> Prices</Heading>
-      <Grid className="body" gridTemplateColumns="2fr 3fr" h="100%" w="100%" gap={5}>
-        <GridItem style={{ width: '100%', height: '80%' }}>
-          {data && (<Prices data={[data[0], data[1]]} onRowClick={(rune) => setChartedRune(rune)} chartedRune={chartedRune} />)}
-        </GridItem>
-        <GridItem style={{ width: '100%', height: '80%', padding: '10px' }}>
-          {chartedRune && <Chart data={data} chartedRune={chartedRune} />}
-        </GridItem>
-      </Grid>
-    </Box>
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </Router>
   );
 }
 

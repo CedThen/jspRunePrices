@@ -12,7 +12,7 @@ import {
 import { Line } from 'react-chartjs-2';
 import { extractTimeLabels, splitRunes } from '../services/helperFx'
 import { colors } from '../themes/colors'
-import { Box } from '@chakra-ui/react'
+import { Box, Center, Text } from '@chakra-ui/react'
 
 ChartJS.register(
   CategoryScale,
@@ -88,8 +88,6 @@ function Chart({ data, chartedRune, }) {
   const splitData = splitRunes(data)
   const runeData = splitData[chartedRune].reverse()
   const labels = extractTimeLabels(data).reverse()
-
-  console.log(`labels`, labels)
   const chartData = {
     labels,
     datasets: [
@@ -100,12 +98,13 @@ function Chart({ data, chartedRune, }) {
         backgroundColor: colors.lineBackground,
       }
     ],
-
   }
+
   return (
-    // <Box w="100%" h="100%" p="5px">
-    <Line data={chartData} options={options(chartedRune, runeData)} width="90%" height="80%" />
-    // </Box>
+    <Box w="100%" h="100%">
+      <Line data={chartData} options={options(chartedRune, runeData)} width="90%" height="80%" />
+      <Center><Text color="brand.white" fontFamily="Exocet" fontSize="xl">Chart Options </Text></Center>
+    </Box>
   )
 }
 
