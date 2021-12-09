@@ -26,8 +26,9 @@ ChartJS.register(
 
 
 
-const options = (title) => {
+const options = (title, data) => {
   return {
+    // animation: false,
     responsive: true,
     plugins: {
       legend: {
@@ -63,8 +64,11 @@ const options = (title) => {
           font: {
             family: "Exocet",
             size: 15
-          }
-        }
+          },
+          callback: (val, index) => {
+            return ('    ' + val)
+          },
+        },
       },
       xAxes: {
         ticks: {
@@ -73,24 +77,25 @@ const options = (title) => {
             family: "Exocet",
             size: 15
           }
-        }
+        },
       }
     },
-
-
-    maintainAspectRatio: false
+    maintainAspectRatio: false,
   };
 }
 
 function Chart({ data, chartedRune, }) {
-  const d = splitRunes(data)
+  const splitData = splitRunes(data)
+  const runeData = splitData[chartedRune].reverse()
   const labels = extractTimeLabels(data).reverse()
+
+  console.log(`labels`, labels)
   const chartData = {
     labels,
     datasets: [
       {
         label: chartedRune,
-        data: d[chartedRune].reverse(),
+        data: runeData,
         borderColor: colors.lineBorder,
         backgroundColor: colors.lineBackground,
       }
@@ -99,7 +104,7 @@ function Chart({ data, chartedRune, }) {
   }
   return (
     // <Box w="100%" h="100%" p="5px">
-    <Line data={chartData} options={options(chartedRune)} width="90%" height="80%" />
+    <Line data={chartData} options={options(chartedRune, runeData)} width="90%" height="80%" />
     // </Box>
   )
 }
