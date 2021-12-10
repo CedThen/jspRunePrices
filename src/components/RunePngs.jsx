@@ -14,7 +14,7 @@ import VexPng from '../assets/vex.png'
 import ZodPng from '../assets/zod.png'
 import { Image } from '@chakra-ui/react'
 
-const RuneImage = (props) => <Image w="32px" objectFit="contain" paddingRight="3" {...props} />
+const RuneImage = (props) => <Image w="36px" objectFit="contain" paddingRight="3" {...props} />
 
 const RunePngs = (rune) => {
   const runesMap = {

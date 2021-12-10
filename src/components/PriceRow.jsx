@@ -1,4 +1,4 @@
-import { Tr, Td, Text, Image } from '@chakra-ui/react'
+import { Tr, Td, Text } from '@chakra-ui/react'
 import { toFixed } from '../services/helperFx'
 import React from 'react'
 import RunePngs from './RunePngs'
