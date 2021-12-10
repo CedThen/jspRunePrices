@@ -13,6 +13,8 @@ import { Line } from 'react-chartjs-2';
 import { extractTimeLabels, splitRunes } from '../services/helperFx'
 import { colors } from '../themes/colors'
 import { Box, Center, Text } from '@chakra-ui/react'
+import TimeFrameRadio from './TimeFrameRadio'
+import { determineMaxTicks } from '../services/helperFx'
 
 ChartJS.register(
   CategoryScale,
@@ -33,6 +35,7 @@ const tickStyle = {
 }
 
 const options = (title, data) => {
+  const maxTicksLimit = determineMaxTicks(data.length)
   return {
     responsive: true,
     plugins: {
@@ -72,15 +75,20 @@ const options = (title, data) => {
         },
       },
       xAxes: {
-        ticks: tickStyle
+        // type: 'time',
+        ticks: {
+          ...tickStyle,
+          maxTicksLimit: maxTicksLimit
+        }
       }
     },
     maintainAspectRatio: false,
   };
 }
 
-function Chart({ data, chartedRune, }) {
+function Chart({ data, chartedRune, fetchData }) {
   const splitData = splitRunes(data)
+  // only reversing one rune's dataSet at a time instead of reversing all 14 of them
   const runeData = splitData[chartedRune].reverse()
   const labels = extractTimeLabels(data).reverse()
   const chartData = {
@@ -98,8 +106,9 @@ function Chart({ data, chartedRune, }) {
   return (
     <Box w="100%" h="100%">
       <Line data={chartData} options={options(chartedRune, runeData)} width="90%" height="80%" />
-      <Center paddingTop="20px">
+      <Center padding="20px" display="flex" flexDirection="column">
         <Text fontFamily="Exocet" fontSize="xl">Timeframe</Text>
+        <TimeFrameRadio fetchData={fetchData} />
       </Center>
     </Box>
   )

@@ -11,8 +11,8 @@ const Home = () => {
   const [data, setData] = useState();
   const [chartedRune, setChartedRune] = useState('ber') // string
 
-  async function fetchData() {
-    const response = await fetchLastAmount(24)
+  async function fetchData(amount = 24) {
+    const response = await fetchLastAmount(amount)
     setData(response)
   }
   useEffect(() => {
@@ -33,7 +33,7 @@ const Home = () => {
           {data && (<Prices data={[data[0], data[1]]} onRowClick={(rune) => setChartedRune(rune)} chartedRune={chartedRune} />)}
         </GridItem>
         <GridItem style={{ width: '100%', height: '80%', padding: '10px' }}>
-          {chartedRune && <Chart data={data} chartedRune={chartedRune} />}
+          {chartedRune && <Chart data={data} chartedRune={chartedRune} fetchData={fetchData} />}
         </GridItem>
       </Grid>
     </Box>
