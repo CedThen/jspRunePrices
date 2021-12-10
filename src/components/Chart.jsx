@@ -98,7 +98,9 @@ function Chart({ data, chartedRune, }) {
   return (
     <Box w="100%" h="100%">
       <Line data={chartData} options={options(chartedRune, runeData)} width="90%" height="80%" />
-      <Center><Text fontFamily="Exocet" fontSize="xl">Chart Options </Text></Center>
+      <Center paddingTop="20px">
+        <Text fontFamily="Exocet" fontSize="xl">Timeframe</Text>
+      </Center>
     </Box>
   )
 }

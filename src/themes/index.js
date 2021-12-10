@@ -10,7 +10,6 @@ const theme = extendTheme({
       white: '#ffffff',
       black: '#000000',
       lightGrey: '#2c2e33',
-      veryLightGrey: 'rgb(44,46,51,0.25)'
     }
   },
   fonts: {

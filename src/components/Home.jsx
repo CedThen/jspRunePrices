@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Heading, Grid, GridItem, Box, Text } from '@chakra-ui/layout';
-import { Skeleton, Stack } from '@chakra-ui/react'
 import Header from './Header';
 import Chart from './Chart';
 import Prices from './Prices';
@@ -22,8 +21,8 @@ const Home = () => {
 
 
 
-  // if (!data) 
-  return (<LoadingSkeleton />)
+  if (!data)
+    return (<LoadingSkeleton />)
 
   return (
     <Box style={baseStyling} backgroundColor='brand.grey'>

@@ -13,6 +13,8 @@ import {
 
 import { LinkIcon } from '@chakra-ui/icons'
 
+const CinzText = ({ children, ...restProps }) => <Text {...restProps} fontFamily="Cinzel">{children}</Text>
+
 const Header = () => {
   return (
     <Box
@@ -33,19 +35,21 @@ const Header = () => {
         <PopoverContent backgroundColor="brand.grey">
           <PopoverArrow />
           <PopoverHeader>
-            <Text fontFamily="Lora" fontSize="lg">Methodology</Text>
+            <CinzText align="center" fontSize="lg">Methodology</CinzText>
           </PopoverHeader>
           <PopoverBody>
-            <Text fontFamily="Lora">The data displayed is collected once an hour from the latest 100 posts under the "runes" filter on d2Jsp.</Text>
+            <CinzText >This data is collected once an hour from the latest 100 posts under the "runes" filter on d2Jsp for softcore d2R.</CinzText>
             <br />
-            <Text fontFamily="Lora">This should not be considered a definitive authority on rune pricing, as its data processing is unable to handle the multitude of jargon out there.
+            <CinzText >This should not be considered a definitive authority on rune pricing, as its data processing is imperfect and cannot handle all the jargon out there. </CinzText>
+            <br />
+            <CinzText>
               However, I hope it helps make understanding rune pricing easier.
-            </Text>
+            </CinzText>
           </PopoverBody>
           <PopoverHeader></PopoverHeader>
           <PopoverFooter>
-            <Text fontFamily="Lora">Questions? Job offers?</Text>
-            <Text>I'm available at cedthen@gmail.com</Text>
+            <CinzText >Questions?</CinzText>
+            <CinzText>Reach me at cedthen@gmail.com</CinzText>
           </PopoverFooter>
         </PopoverContent>
       </Popover>

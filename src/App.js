@@ -1,7 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Home from './components/Home'
-import About from './components/About'
 
 
 function App() {
@@ -17,6 +15,4 @@ export default App;
   features
     select timeframes for charting
       will need to review how data is retrieved from db for this
-    add skeleton for loading in / handle loading screen better
-
 */
