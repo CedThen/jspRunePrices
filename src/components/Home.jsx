@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Heading, Grid, GridItem, Box, Text } from '@chakra-ui/layout';
+import { Heading, Grid, GridItem, Box, Text, } from '@chakra-ui/layout';
 import Header from './Header';
 import Chart from './Chart';
 import Prices from './Prices';

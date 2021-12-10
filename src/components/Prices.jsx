@@ -12,13 +12,14 @@ import {
 import PriceRow from './PriceRow'
 import { displayLocalTime } from '../services/helperFx'
 
+
 const HeaderCell = ({ children, ...restProps }) =>
   (<Th width="25%" fontFamily="ExocetBold" fontSize="lg" fontWeight="light" {...restProps}><Text fontSize="xl" textAlign="center">{children}</Text></Th>)
 
 const Prices = ({ data, onRowClick, chartedRune }) => {
   const { runeprices, createdAt } = data[0]
   const { runeprices: prevRuneprices } = data[1]
-  const widths = ['12%', '25%', '25%', '25%', '13%']
+  const widths = ['15%', '25%', '25%', '25%', '10%']
   return (
     <Box >
       <Table variant="simple">
@@ -29,7 +30,7 @@ const Prices = ({ data, onRowClick, chartedRune }) => {
             <HeaderCell w={widths[1]} border='1px' borderColor='white'>Bid</HeaderCell>
             <HeaderCell w={widths[2]} border='1px' borderColor='white'>Ask</HeaderCell>
             <HeaderCell w={widths[3]} border='1px' borderColor='white'>% Chg</HeaderCell>
-            <HeaderCell w={widths[4]} border='1px' borderColor='white'>Volume</HeaderCell>
+            <HeaderCell w={widths[4]} border='1px' borderColor='white'>Vol</HeaderCell>
           </Tr>
         </Thead>
         <Tbody>
