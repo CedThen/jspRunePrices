@@ -3,5 +3,7 @@ export const colors = {
   d2Red: '#cd0d01',
   grey: '#202124',
   d2Orange: '#ffa800',
-  white: '#ffffff'
+  white: '#ffffff',
+  lineBorder: 'rgb(255, 99, 132)',
+  lineBackground: 'rgba(255, 99, 132, 0.5)'
 }

@@ -16,5 +16,25 @@ export function splitRunes(data) {
 }
 
 export function extractTimeLabels(data) {
-  return data.map(d => new Date(d.createdAt).toLocaleTimeString())
+  return data.length <= 24 ? data.map(d => displayLocalTime(d.createdAt)) : data.map(d => displayLocalDate(d.createdAt))
+}
+
+export function displayLocalTime(time) {
+  return new Date(time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+}
+
+function displayLocalDate(time) {
+  return new Date(time).toLocaleDateString([], { month: 'short', day: '2-digit' })
+}
+
+export const timeFrameHash = {
+  'Daily': 24,
+  'Weekly': 168,
+  'Monthly': 730
+}
+
+export function determineMaxTicks(length) {
+  if (length <= timeFrameHash.Daily) return 24
+  else if (length <= timeFrameHash.Weekly) return 7
+  return 30
 }
