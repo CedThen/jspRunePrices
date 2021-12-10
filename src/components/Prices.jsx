@@ -13,7 +13,7 @@ import PriceRow from './PriceRow'
 import { displayLocalTime } from '../services/helperFx'
 
 const HeaderCell = ({ children, ...restProps }) =>
-  (<Th width="25%" fontFamily="ExocetBold" fontSize="lg" color="brand.white" fontWeight="light" {...restProps}><Text fontSize="xl" textAlign="center">{children}</Text></Th>)
+  (<Th width="25%" fontFamily="ExocetBold" fontSize="lg" fontWeight="light" {...restProps}><Text fontSize="xl" textAlign="center">{children}</Text></Th>)
 
 const Prices = ({ data, onRowClick, chartedRune }) => {
   const { runeprices, createdAt } = data[0]

@@ -3,7 +3,7 @@ import { toFixed } from '../services/helperFx'
 import React from 'react'
 const decimalPlaces = 2
 
-const PriceCell = ({ children, ...restProps }) => <Td fontFamily="ExocetBold" border="0.5px" ><Text {...restProps} fontSize="xl" >{children}</Text></Td>
+const PriceCell = ({ children, ...restProps }) => <Td fontFamily="ExocetBold" border="0.5px" ><Text {...restProps} fontSize="lg" >{children}</Text></Td>
 
 const PriceRow = ({ runeprices, rune, prevRuneprices, onRowClick, isSelected }) => {
   let bidDiff = runeprices[rune].bidAvg - prevRuneprices[rune].bidAvg
@@ -21,7 +21,7 @@ const PriceRow = ({ runeprices, rune, prevRuneprices, onRowClick, isSelected }) 
       <PriceCell color={bidColor} textAlign='right'>{toFixed(runeprices[rune].bidAvg, decimalPlaces)}<span></span></PriceCell>
       <PriceCell color={askColor} textAlign='right'>{toFixed(runeprices[rune].askAvg, decimalPlaces)}</PriceCell>
       <PriceCell color={changeColor} textAlign='right'>{toFixed(percentChange * 100, decimalPlaces)}%</PriceCell>
-      <PriceCell color="brand.white" textAlign='right'>{runeprices[rune].count}</PriceCell>
+      <PriceCell textAlign='right'>{runeprices[rune].count}</PriceCell>
     </Tr>
   )
 }

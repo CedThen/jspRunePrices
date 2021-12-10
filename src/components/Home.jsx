@@ -1,19 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Heading, Grid, GridItem, Box, Text } from '@chakra-ui/layout';
+import { Skeleton, Stack } from '@chakra-ui/react'
 import Header from './Header';
 import Chart from './Chart';
 import Prices from './Prices';
 import { fetchLastAmount } from '../apiRequests';
-
-const baseStyling = {
-  display: 'flex',
-  alignItems: 'center',
-  flexDirection: 'column',
-  width: '100vw',
-  height: '100vh',
-  paddingLeft: '20px',
-  paddingRight: '20px'
-}
+import { baseStyling } from '../themes/styling';
+import LoadingSkeleton from './LoadingSkeleton';
 
 const Home = () => {
   const [data, setData] = useState();
@@ -28,7 +21,9 @@ const Home = () => {
   }, [])
 
 
-  if (!data) return (<div>Loading</div>)
+
+  // if (!data) 
+  return (<LoadingSkeleton />)
 
   return (
     <Box style={baseStyling} backgroundColor='brand.grey'>

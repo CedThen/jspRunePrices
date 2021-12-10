@@ -9,14 +9,20 @@ const theme = extendTheme({
       orange: '#ffa800',
       white: '#ffffff',
       black: '#000000',
-      lightGrey: '#3d3f45'
+      lightGrey: '#2c2e33',
+      veryLightGrey: 'rgb(44,46,51,0.25)'
     }
   },
   fonts: {
     heading: 'ExocetBold',
-    body: 'ExocetLight',
-    Td: 'ExocetLight'
   },
+  components: {
+    Text: {
+      baseStyle: {
+        color: 'brand.white'
+      }
+    }
+  }
 })
 
 export default theme

@@ -16,3 +16,7 @@ code {
   font-family: "Exocet";
   src: url('./fonts/exocet.ttf') format('truetype');
 }
+
+@font-face {
+  font-family: 'Lora', serif;
+}

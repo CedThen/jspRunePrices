@@ -24,11 +24,16 @@ ChartJS.register(
   Legend
 );
 
-
+const tickStyle = {
+  color: 'white',
+  font: {
+    family: "Exocet",
+    size: 15
+  },
+}
 
 const options = (title, data) => {
   return {
-    // animation: false,
     responsive: true,
     plugins: {
       legend: {
@@ -60,24 +65,14 @@ const options = (title, data) => {
     scales: {
       yAxes: {
         ticks: {
-          color: 'white',
-          font: {
-            family: "Exocet",
-            size: 15
-          },
-          callback: (val, index) => {
+          ...tickStyle,
+          callback: (val) => {
             return ('    ' + val)
           },
         },
       },
       xAxes: {
-        ticks: {
-          color: 'white',
-          font: {
-            family: "Exocet",
-            size: 15
-          }
-        },
+        ticks: tickStyle
       }
     },
     maintainAspectRatio: false,
@@ -103,7 +98,7 @@ function Chart({ data, chartedRune, }) {
   return (
     <Box w="100%" h="100%">
       <Line data={chartData} options={options(chartedRune, runeData)} width="90%" height="80%" />
-      <Center><Text color="brand.white" fontFamily="Exocet" fontSize="xl">Chart Options </Text></Center>
+      <Center><Text fontFamily="Exocet" fontSize="xl">Chart Options </Text></Center>
     </Box>
   )
 }
