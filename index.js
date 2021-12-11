@@ -23,7 +23,7 @@ const runScraper = async () => {
   const jsonData = cleanData(data)
   const results = processData(jsonData, prevAvgData)
   await createDataPoint(results)
-  console.log(`finished`, finished)
+  console.log(`finished`)
 }
 const scrapeJsp = () => {
   return new Promise((resolve, reject) => {

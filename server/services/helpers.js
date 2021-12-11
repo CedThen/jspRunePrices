@@ -110,7 +110,6 @@ function finalizeData(data, prevAvgData) {
     data[rune].ask = removeZeroes(data[rune].ask)
     data[rune].askAvg = findAvg(data[rune].ask) || prevAvgData[rune].s0b
   })
-  console.log(`data`, data)
   const finaldata = {
     runeprices: data
   }
