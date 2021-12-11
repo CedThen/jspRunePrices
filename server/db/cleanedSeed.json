@@ -1,0 +1,151 @@
+[{
+  "runeprices": {
+  "lem": {
+    "bid": [],
+    "ask": [],
+    "count": 0,
+    "bidAvg": 5,
+    "askAvg": 8
+  },
+  "pul": {
+    "bid": [],
+    "ask": [],
+    "count": 2,
+    "bidAvg": 12,
+    "askAvg": 14
+  },
+  "um": {
+    "bid": [],
+    "ask": [],
+    "count": 5,
+    "bidAvg": 19,
+    "askAvg": 21
+  },
+  "mal": {
+    "bid": [],
+    "ask": [],
+    "count": 3,
+    "bidAvg": 29,
+    "askAvg": 32
+  },
+  "ist": {
+    "bid": [
+      46,
+      50
+    ],
+    "ask": [
+      50,
+      50,
+      60
+    ],
+    "count": 14,
+    "bidAvg": 48,
+    "askAvg": 53.333333333333336
+  },
+  "gul": {
+    "bid": [],
+    "ask": [
+      80
+    ],
+    "count": 5,
+    "bidAvg": 77,
+    "askAvg": 80
+  },
+  "vex": {
+    "bid": [
+      150,
+      160
+    ],
+    "ask": [
+      160,
+      160,
+      150,
+      150
+    ],
+    "count": 10,
+    "bidAvg": 155,
+    "askAvg": 155
+  },
+  "ohm": {
+    "bid": [],
+    "ask": [
+      340
+    ],
+    "count": 3,
+    "bidAvg": 320,
+    "askAvg": 340
+  },
+  "lo": {
+    "bid": [
+      550,
+      600
+    ],
+    "ask": [
+      650,
+      650
+    ],
+    "count": 7,
+    "bidAvg": 575,
+    "askAvg": 650
+  },
+  "sur": {
+    "bid": [
+      700
+    ],
+    "ask": [
+      750,
+      700,
+      700,
+      725
+    ],
+    "count": 6,
+    "bidAvg": 700,
+    "askAvg": 718.75
+  },
+  "ber": {
+    "bid": [
+      1400,
+      1450,
+      1400
+    ],
+    "ask": [
+      1500,
+      1500,
+      1500,
+      1500,
+      1500
+    ],
+    "count": 14,
+    "bidAvg": 1416.6666666666667,
+    "askAvg": 1500
+  },
+  "jah": {
+    "bid": [],
+    "ask": [
+      1395,
+      1450
+    ],
+    "count": 11,
+    "bidAvg": 1145,
+    "askAvg": 1422.5
+  },
+  "cham": {
+    "bid": [
+      150,
+      160
+    ],
+    "ask": [],
+    "count": 2,
+    "bidAvg": 155,
+    "askAvg": 166
+  },
+  "zod": {
+    "bid": [],
+    "ask": [
+      340
+    ],
+    "count": 1,
+    "bidAvg": 384,
+    "askAvg": 340
+  }
+}}]

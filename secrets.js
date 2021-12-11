@@ -6,7 +6,8 @@ const dbCred = {
   port: 5432
 }
 
-const dbConnectionString = 'mongodb://localhost:27017/jspScraper'
+// const dbConnectionString = 'mongodb://localhost:27017/jspScraper'
+const dbConnectionString = 'mongodb+srv://frawglehgs:Pinapple123%21@cluster0.3vqjg.mongodb.net/test'
 
 module.exports = {
   // ...dbCred

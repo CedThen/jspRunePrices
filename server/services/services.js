@@ -9,8 +9,7 @@ const {
   updateAccumulator,
   finalizeData
 } = require('./helpers')
-// const { retrieveLastestAmount, createDataPoint } = require('../db/index.js')
-// const { scrapeJsp } = require('../scrapingScript/script.js')
+
 
 const flattenAvgs = (priceArray) => {
   const summedAvgs = priceArray.reduce(reducePriceArray, jsonDeepClone(avgPrevFormat))
@@ -20,6 +19,7 @@ const flattenAvgs = (priceArray) => {
 const cleanData = (data) => JSON.parse(data.toString().replace(/"/g, '').replace(/'/g, '"').replace("<b>", '').replace("</b>", ''))
 
 const processData = (data, prevAvgData) => {
+
   let results = data.reduce((accumulator, current) => {
     const { title, type } = current
     const runesMentioned = findRunes(title, runes)
