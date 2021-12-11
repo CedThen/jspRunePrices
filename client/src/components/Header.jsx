@@ -38,7 +38,7 @@ const Header = () => {
             <CinzText align="center" fontSize="lg">Methodology</CinzText>
           </PopoverHeader>
           <PopoverBody>
-            <CinzText >This data is collected once an hour from the latest 100 posts under the "runes" filter on d2Jsp for softcore d2R.</CinzText>
+            <CinzText >This data is collected once an hour from the latest 100 posts under the "runes" filter on d2Jsp for softcore d2R. The weekly and monthly views will work once enough data has been collected (should have enough by 1/11/21)</CinzText>
             <br />
             <CinzText >This should not be considered a definitive authority on rune pricing, as its data processing is imperfect and cannot handle all the jargon out there. </CinzText>
             <br />

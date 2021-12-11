@@ -26,12 +26,14 @@ ChartJS.register(
   Legend
 );
 
+const fontStyle = {
+  family: "Exocet",
+  size: 15
+}
+
 const tickStyle = {
   color: 'white',
-  font: {
-    family: "Exocet",
-    size: 15
-  },
+  font: fontStyle
 }
 
 const options = (title, data) => {
@@ -44,23 +46,17 @@ const options = (title, data) => {
       },
       tooltip: {
         titleColor: 'white',
-        titleFont: {
-          family: "Exocet",
-          size: 15
-        },
+        titleFont: fontStyle,
 
         bodyColor: colors.d2Orange,
-        bodyFont: {
-          family: "Exocet",
-          size: 15
-        }
+        bodyFont: fontStyle
       },
       title: {
         display: true,
         text: title,
         color: colors.d2Orange,
         font: {
-          family: "Exocet",
+          ...fontStyle,
           size: 40
         }
       },
