@@ -2,7 +2,6 @@ const cors = require('cors')
 const express = require('express')
 
 const { getLatestDataPoint, getNumberDataPoints } = require('./routes/')
-// const { scrapeJsp } = require('./scrapingScript/script.js')
 const app = express()
 const port = 8080
 const MILLISECONDS_PER_HOUR = 3600000
