@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon index.js",
     "seed": "node ./server/db/seedDb.js",
-    "start": "nodemon index.jsnpm"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
