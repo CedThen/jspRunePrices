@@ -33,10 +33,6 @@ const scrapeJsp = () => {
   })
 }
 
-const url = process.env.ADDRESS_URL || 'localhost'
-console.log(`url`, url)
-
-
 let scrapeCounter = 0;
 runScraper()
 setInterval(() => {
