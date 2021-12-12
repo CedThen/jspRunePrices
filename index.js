@@ -34,14 +34,13 @@ const scrapeJsp = () => {
 }
 
 
-let counter = 0;
+let scrapeCounter = 0;
 runScraper()
 setInterval(() => {
-  counter++
-  console.log(`counter************************************************** `, counter)
+  scrapeCounter++
+  console.log(`scrapeCounter************************************************** `, scrapeCounter)
   runScraper()
 }, MILLISECONDS_PER_HOUR);
-
 
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 
@@ -49,3 +48,5 @@ app.get('/api/latest', getLatestDataPoint)
 app.get('/api/last/:amount', getNumberDataPoints)
 
 app.listen(port, () => console.log(`Express listening on port ${port}`))
+
+// 98.221.154.25/32

@@ -8,8 +8,6 @@
 # testing
 /coverage
 
-# production
-/build
 
 # misc
 .DS_Store
@@ -23,6 +21,6 @@ yarn-debug.log*
 yarn-error.log*
 
 /client/node_modules
-/client/build
+# /client/build
 
 secrets.js

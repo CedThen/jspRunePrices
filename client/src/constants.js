@@ -1,5 +1,6 @@
 const port = process.env.PORT || 8080
-
-export const fetchLatestApi = `http://localhost:${port}/api/latest/`
-export const fetchLastAmountApi = (num) => `http://localhost:${port}/api/last/${num}`
+// const url = `jspscraper.herokuapp.com`
+const url = process.env.ADDRESS_URL
+export const fetchLatestApi = `http://${url}:${port}/api/latest/`
+export const fetchLastAmountApi = (num) => `http://${url}:${port}/api/last/${num}`
 
