@@ -1,3 +1,5 @@
-export const fetchLatestApi = 'http://localhost:8080/api/latest/'
-export const fetchLastAmountApi = (num) => `http://localhost:8080/api/last/${num}`
+const port = process.env.PORT || 8080
+
+export const fetchLatestApi = `http://localhost:${port}/api/latest/`
+export const fetchLastAmountApi = (num) => `http://localhost:${port}/api/last/${num}`
 
