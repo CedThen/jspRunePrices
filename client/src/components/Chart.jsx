@@ -104,7 +104,7 @@ function Chart({ data, chartedRune, fetchData }) {
   }
 
   return (
-    <Box w="100%" h="100%" >
+    <Box w="100%" h={isMobile ? "50%" : '100%'} >
       <Line data={chartData} options={options(chartedRune, runeData, isMobile)} width="90%" height="80%" />
       <Center padding="20px" display="flex" flexDirection="column">
         <Text fontFamily="Exocet" fontSize="xl">Timeframe</Text>

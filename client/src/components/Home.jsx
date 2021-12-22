@@ -36,7 +36,7 @@ const Home = () => {
   const MobileLayout = () => (
     <>
       <Prices maxWidth="100%" w="100%" data={[data[0], data[1]]} onRowClick={(rune) => setChartedRune(rune)} chartedRune={chartedRune} />
-      <Chart data={data} chartedRune={chartedRune} fetchData={fetchData} />
+      <Chart maxHeight="300px" data={data} chartedRune={chartedRune} fetchData={fetchData} />
     </>
   )
 
