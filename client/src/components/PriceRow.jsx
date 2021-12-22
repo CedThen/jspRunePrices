@@ -4,7 +4,7 @@ import React from 'react'
 import RunePngs from './RunePngs'
 const decimalPlaces = 2
 
-const PriceCell = ({ children, ...restProps }) => <Td fontFamily="ExocetBold" border="0.5px" borderColor="white"><Text {...restProps} fontSize="lg" >{children}</Text></Td>
+const PriceCell = ({ children, ...restProps }) => <Td fontFamily="ExocetBold" border="0.5px" borderColor="white"><Text {...restProps} fontSize="sm" >{children}</Text></Td>
 
 const PriceRow = ({ runeprices, rune, prevRuneprices, onRowClick, isSelected }) => {
   let bidDiff = runeprices[rune].bidAvg - prevRuneprices[rune].bidAvg

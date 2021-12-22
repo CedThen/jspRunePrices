@@ -14,23 +14,23 @@ import { displayLocalTime } from '../services/helperFx'
 
 
 const HeaderCell = ({ children, ...restProps }) =>
-  (<Th width="25%" fontFamily="ExocetBold" fontSize="lg" fontWeight="light" {...restProps}><Text fontSize="xl" textAlign="center">{children}</Text></Th>)
+  (<Th fontFamily="ExocetBold" fontSize="lg" fontWeight="light" border='1px' {...restProps}><Text fontSize="xl" textAlign="center">{children}</Text></Th>)
 
-const Prices = ({ data, onRowClick, chartedRune }) => {
+const Prices = ({ isMobile, data, onRowClick, chartedRune }) => {
   const { runeprices, createdAt } = data[0]
   const { runeprices: prevRuneprices } = data[1]
-  const widths = ['15%', '25%', '25%', '25%', '10%']
+
   return (
-    <Box >
+    <Box w='100%'>
       <Table variant="simple">
         <TableCaption>Updates once an hour. Last updated at {displayLocalTime(createdAt)}</TableCaption>
         <Thead>
           <Tr >
-            <HeaderCell w={widths[0]} border='1px' borderColor='white'>Rune</HeaderCell>
-            <HeaderCell w={widths[1]} border='1px' borderColor='white'>Bid</HeaderCell>
-            <HeaderCell w={widths[2]} border='1px' borderColor='white'>Ask</HeaderCell>
-            <HeaderCell w={widths[3]} border='1px' borderColor='white'>% Chg</HeaderCell>
-            <HeaderCell w={widths[4]} border='1px' borderColor='white'>Vol</HeaderCell>
+            <HeaderCell borderColor='white'>Rune</HeaderCell>
+            <HeaderCell borderColor='white'>Bid</HeaderCell>
+            <HeaderCell borderColor='white'>Ask</HeaderCell>
+            <HeaderCell borderColor='white'>% Chg</HeaderCell>
+            <HeaderCell borderColor='white'>Vol</HeaderCell>
           </Tr>
         </Thead>
         <Tbody>
@@ -38,7 +38,6 @@ const Prices = ({ data, onRowClick, chartedRune }) => {
             let isSelected = rune === chartedRune
             return (<PriceRow
               isSelected={isSelected}
-              widths={widths}
               runeprices={runeprices}
               rune={rune}
               prevRuneprices={prevRuneprices}
