@@ -5,8 +5,9 @@ import Chart from './Chart';
 import Prices from './Prices';
 import { fetchLastAmount } from '../apiRequests';
 import LoadingSkeleton from './LoadingSkeleton';
-
+import { responsiveLayouts } from '../themes/styling';
 import ResponsiveContext from './ResponsiveContext';
+import { baseStyling } from '../themes/styling';
 
 const Home = () => {
   const [data, setData] = useState();
@@ -21,14 +22,16 @@ const Home = () => {
 
   const isMobile = useContext(ResponsiveContext)
 
-  const NormLayout = () => (<Grid className="body" gridTemplateColumns="2fr 3fr" h="100%" w="100%" gap={5}>
-    <GridItem style={{ width: '100%', height: '80%' }}>
-      <Prices data={[data[0], data[1]]} onRowClick={(rune) => setChartedRune(rune)} chartedRune={chartedRune} />
-    </GridItem>
-    <GridItem style={{ width: '100%', height: '80%', padding: '10px' }}>
-      <Chart data={data} chartedRune={chartedRune} fetchData={fetchData} />
-    </GridItem>
-  </Grid>)
+  const NormLayout = () => (
+    <Grid className="body" gridTemplateColumns="2fr 3fr" h="100%" w="100%" gap={5}>
+      <GridItem style={{ width: '100%', height: '80%' }}>
+        <Prices data={[data[0], data[1]]} onRowClick={(rune) => setChartedRune(rune)} chartedRune={chartedRune} />
+      </GridItem>
+      <GridItem style={{ width: '100%', height: '80%', padding: '10px' }}>
+        <Chart data={data} chartedRune={chartedRune} fetchData={fetchData} />
+      </GridItem>
+    </Grid>
+  )
 
   const MobileLayout = () => (
     <>
@@ -37,43 +40,14 @@ const Home = () => {
     </>
   )
 
-  const responsiveLayouts = (isMobile) => {
-    const defaultLayout = {
-      heading: {
-        size: "3xl",
-        padding: "20px"
-      }
-    }
-    const mobileLayout = {
-      heading: {
-        size: 'xl',
-        padding: '10px',
-      }
-    }
-    return isMobile ? mobileLayout : defaultLayout
-  }
-
-  const baseStyling = {
-    display: 'flex',
-    alignItems: 'center',
-    flexDirection: 'column',
-    maxWidth: '100%',
-    height: isMobile === 'mobile' ? '200vh' : '100vh',
-    overflowX: 'hidden',
-    paddingLeft: '20px',
-    paddingRight: '20px',
-
-  }
-
   if (!data)
     return (<LoadingSkeleton />)
 
   return (
-    <Box style={baseStyling} backgroundColor='brand.grey'>
+    <Box style={{ ...baseStyling, width: '100vw' }} backgroundColor='brand.grey'>
       <Header />
       <Heading {...responsiveLayouts(isMobile).heading} color="brand.white">JSP <Text as="span" color='brand.orange'>Rune</Text> Prices</Heading>
       {isMobile ? <MobileLayout /> : <NormLayout />}
-
     </Box>
   );
 }

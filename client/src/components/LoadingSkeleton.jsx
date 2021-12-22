@@ -4,7 +4,8 @@ import { Heading, Grid, GridItem, Box, Text } from '@chakra-ui/layout';
 import { Skeleton, Stack } from '@chakra-ui/react'
 import { baseStyling } from '../themes/styling';
 import ResponsiveContext from './ResponsiveContext';
-
+import { responsiveLayouts } from '../themes/styling';
+import Header from './Header';
 
 const LoadingSkeleton = () => {
   const isMobile = React.useContext(ResponsiveContext)
@@ -23,14 +24,15 @@ const LoadingSkeleton = () => {
     </Grid>
 
   const MobileSkelly = () =>
-    <Stack>
+    <Stack width="300px">
       {skellyArray.map(() => <Skeleton height="30px" paddingBottom="10" color="brand.orange" startColor='brand.lightGrey' endColor='brand.grey' />)}
     </Stack>
 
   return (
-    <Box style={baseStyling} backgroundColor='brand.grey'>
-      <Heading size="3xl" padding="20px" color="brand.white">JSP <Text as="span" color='brand.orange'>Rune</Text> Prices</Heading>
-      {isMobile === 'mobile' ? <MobileSkelly /> : <DefaultSkelly />}
+    <Box style={{ ...baseStyling, height: '100vh' }} backgroundColor='brand.grey'>
+      <Header />
+      <Heading {...responsiveLayouts(isMobile).heading} color="brand.white">JSP <Text as="span" color='brand.orange'>Rune</Text> Prices</Heading>
+      {isMobile ? <MobileSkelly /> : <DefaultSkelly />}
     </Box>
   )
 }
