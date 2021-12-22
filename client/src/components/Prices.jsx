@@ -14,16 +14,20 @@ import { displayLocalTime } from '../services/helperFx'
 import ResponsiveContext from './ResponsiveContext'
 
 
-const HeaderCell = ({ children, ...restProps }) =>
-  (<Th fontFamily="ExocetBold" fontSize="sm" fontWeight="light" border='1px' {...restProps}><Text fontSize="sm" textAlign="center">{children}</Text></Th>)
+
+const HeaderCell = ({ children, ...restProps }) => {
+  const isMobile = React.useContext(ResponsiveContext)
+  return (<Th fontFamily="ExocetBold" f fontWeight="light" border='1px' {...restProps}><Text fontSize={isMobile ? 'sm' : 'md'} textAlign="center">{children}</Text></Th>)
+}
 
 const Prices = ({ data, onRowClick, chartedRune }) => {
   const { runeprices, createdAt } = data[0]
   const { runeprices: prevRuneprices } = data[1]
+  const isMobile = React.useContext(ResponsiveContext)
 
   return (
-    <Box w='100%'>
-      <Table variant="simple">
+    <Box >
+      <Table variant="simple" size={isMobile ? 'sm' : 'md'}>
         <TableCaption>Updates once an hour. Last updated at {displayLocalTime(createdAt)}</TableCaption>
         <Thead>
           <Tr >

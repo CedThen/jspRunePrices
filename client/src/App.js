@@ -4,7 +4,7 @@ import { useMediaQuery } from 'react-responsive'
 import ResponsiveContext from './components/ResponsiveContext'
 
 function App() {
-  const isMobile = useMediaQuery({ query: '(max-width: 480px)' }) ? 'mobile' : 'default'
+  const isMobile = useMediaQuery({ query: '(max-width: 480px)' })
   return (
     <ResponsiveContext.Provider value={isMobile}>
       <Home />

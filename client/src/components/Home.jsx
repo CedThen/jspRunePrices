@@ -4,7 +4,6 @@ import Header from './Header';
 import Chart from './Chart';
 import Prices from './Prices';
 import { fetchLastAmount } from '../apiRequests';
-// import { baseStyling } from '../themes/styling';
 import LoadingSkeleton from './LoadingSkeleton';
 
 import ResponsiveContext from './ResponsiveContext';
@@ -38,28 +37,31 @@ const Home = () => {
     </>
   )
 
-  const responsiveLayouts = {
-    heading: {
-      default: {
+  const responsiveLayouts = (isMobile) => {
+    const defaultLayout = {
+      heading: {
         size: "3xl",
         padding: "20px"
-      },
-      mobile: {
-        size: 'xl',
-        padding: '10px'
       }
     }
+    const mobileLayout = {
+      heading: {
+        size: 'xl',
+        padding: '10px',
+      }
+    }
+    return isMobile ? mobileLayout : defaultLayout
   }
 
   const baseStyling = {
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',
-    // width: '100%',
     maxWidth: '100%',
-    height: '100vh',
-    // paddingLeft: '20px',
-    // paddingRight: '20px',
+    height: isMobile === 'mobile' ? '200vh' : '100vh',
+    overflowX: 'hidden',
+    paddingLeft: '20px',
+    paddingRight: '20px',
 
   }
 
@@ -69,8 +71,8 @@ const Home = () => {
   return (
     <Box style={baseStyling} backgroundColor='brand.grey'>
       <Header />
-      <Heading {...responsiveLayouts.heading[isMobile]} color="brand.white">JSP <Text as="span" color='brand.orange'>Rune</Text> Prices</Heading>
-      {isMobile === 'mobile' ? <MobileLayout /> : <NormLayout />}
+      <Heading {...responsiveLayouts(isMobile).heading} color="brand.white">JSP <Text as="span" color='brand.orange'>Rune</Text> Prices</Heading>
+      {isMobile ? <MobileLayout /> : <NormLayout />}
 
     </Box>
   );

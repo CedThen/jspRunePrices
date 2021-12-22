@@ -1,10 +1,15 @@
+import React from 'react'
 import { Tr, Td, Text } from '@chakra-ui/react'
 import { toFixed } from '../services/helperFx'
-import React from 'react'
+
 import RunePngs from './RunePngs'
+import ResponsiveContext from './ResponsiveContext'
 const decimalPlaces = 2
 
-const PriceCell = ({ children, ...restProps }) => <Td fontFamily="ExocetBold" border="0.5px" borderColor="white"><Text {...restProps} fontSize="sm" >{children}</Text></Td>
+const PriceCell = ({ children, ...restProps }) => {
+  const isMobile = React.useContext(ResponsiveContext)
+  return (<Td fontFamily="ExocetBold" border="0.5px" borderColor="white"><Text {...restProps} fontSize={isMobile ? 'sm' : 'lg'} >{children}</Text></Td>)
+}
 
 const PriceRow = ({ runeprices, rune, prevRuneprices, onRowClick, isSelected }) => {
   let bidDiff = runeprices[rune].bidAvg - prevRuneprices[rune].bidAvg
@@ -18,7 +23,7 @@ const PriceRow = ({ runeprices, rune, prevRuneprices, onRowClick, isSelected }) 
 
   return (
     <Tr onClick={() => onRowClick(rune)} _hover={{ background: 'brand.lightGrey' }} backgroundColor={isSelected ? 'brand.lightGrey' : 'brand.grey'}>
-      <PriceCell w='100%' color="brand.orange" display="flex" flexDirection="row">{RunePngs(rune)}{rune}</PriceCell>
+      <PriceCell color="brand.orange" display="flex" flexDirection="row">{RunePngs(rune)}{rune}</PriceCell>
       <PriceCell color={bidColor} textAlign='right'>{toFixed(runeprices[rune].bidAvg, decimalPlaces)}<span></span></PriceCell>
       <PriceCell color={askColor} textAlign='right'>{toFixed(runeprices[rune].askAvg, decimalPlaces)}</PriceCell>
       <PriceCell color={changeColor} textAlign='right'>{toFixed(percentChange * 100, decimalPlaces)}%</PriceCell>

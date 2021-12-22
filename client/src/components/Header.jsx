@@ -17,27 +17,28 @@ const CinzText = ({ children, ...restProps }) => <Text {...restProps} fontFamily
 
 const Header = () => {
   const isMobile = React.useContext(ResponsiveContext)
-  const responsiveHeader = {
-    mobile: {
+  const responsiveHeader = () => {
+    const mobileLayout = {
       w: '100%',
       h: "5%",
       display: "flex",
       justifyContent: 'center',
       alignItems: 'center',
       padding: '10px'
-    },
-    default: {
+    }
+    const defaultLayout = {
       position: "fixed",
       top: "10",
       right: "20",
       display: "flex",
       flexDirection: "row"
     }
+    return isMobile ? mobileLayout : defaultLayout
   }
 
   return (
     <Box
-      {...responsiveHeader[isMobile]}
+      {...responsiveHeader(isMobile)}
     >
       <a href="https://forums.d2jsp.org/forum.php?f=268&c=2">
         <Text fontFamily="Exocet" fontSize="20" ><LinkIcon /> d2Jsp</Text>
