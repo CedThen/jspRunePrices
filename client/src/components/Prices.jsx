@@ -13,8 +13,6 @@ import PriceRow from './PriceRow'
 import { displayLocalTime } from '../services/helperFx'
 import ResponsiveContext from './ResponsiveContext'
 
-
-
 const HeaderCell = ({ children, ...restProps }) => {
   const isMobile = React.useContext(ResponsiveContext)
   return (<Th fontFamily="ExocetBold" f fontWeight="light" border='1px' {...restProps}><Text fontSize={isMobile ? 'sm' : 'md'} textAlign="center">{children}</Text></Th>)

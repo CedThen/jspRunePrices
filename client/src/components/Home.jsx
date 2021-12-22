@@ -44,7 +44,7 @@ const Home = () => {
     return (<LoadingSkeleton />)
 
   return (
-    <Box style={{ ...baseStyling, width: '100vw' }} backgroundColor='brand.grey'>
+    <Box style={{ ...baseStyling, width: '100vw', height: '100vh' }} backgroundColor='brand.grey'>
       <Header />
       <Heading {...responsiveLayouts(isMobile).heading} color="brand.white">JSP <Text as="span" color='brand.orange'>Rune</Text> Prices</Heading>
       {isMobile ? <MobileLayout /> : <NormLayout />}
