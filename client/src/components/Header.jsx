@@ -10,20 +10,35 @@ import {
   PopoverArrow,
 
 } from '@chakra-ui/react'
-
+import ResponsiveContext from './ResponsiveContext'
 import { LinkIcon } from '@chakra-ui/icons'
 
 const CinzText = ({ children, ...restProps }) => <Text {...restProps} fontFamily="Cinzel">{children}</Text>
 
 const Header = () => {
+  const isMobile = React.useContext(ResponsiveContext)
+  const responsiveHeader = () => {
+    const mobileLayout = {
+      w: '100%',
+      h: "5%",
+      display: "flex",
+      justifyContent: 'center',
+      alignItems: 'center',
+      padding: '10px'
+    }
+    const defaultLayout = {
+      position: "fixed",
+      top: "10",
+      right: "20",
+      display: "flex",
+      flexDirection: "row"
+    }
+    return isMobile ? mobileLayout : defaultLayout
+  }
+
   return (
     <Box
-      position="fixed"
-      top="10"
-      right="20"
-
-      display="flex"
-      flexDirection="row"
+      {...responsiveHeader(isMobile)}
     >
       <a href="https://forums.d2jsp.org/forum.php?f=268&c=2">
         <Text fontFamily="Exocet" fontSize="20" ><LinkIcon /> d2Jsp</Text>

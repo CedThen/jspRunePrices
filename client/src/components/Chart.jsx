@@ -15,6 +15,8 @@ import { colors } from '../themes/colors'
 import { Box, Center, Text } from '@chakra-ui/react'
 import TimeFrameRadio from './TimeFrameRadio'
 import { determineMaxTicks } from '../services/helperFx'
+import ResponsiveContext from './ResponsiveContext';
+
 
 ChartJS.register(
   CategoryScale,
@@ -36,8 +38,9 @@ const tickStyle = {
   font: fontStyle
 }
 
-const options = (title, data) => {
-  const maxTicksLimit = determineMaxTicks(data.length)
+const options = (title, data, isMobile) => {
+  const maxTicksLimit = isMobile ? 5 : determineMaxTicks(data.length)
+
   return {
     responsive: true,
     plugins: {
@@ -57,7 +60,7 @@ const options = (title, data) => {
         color: colors.d2Orange,
         font: {
           ...fontStyle,
-          size: 40
+          size: isMobile ? 20 : 40
         }
       },
     },
@@ -87,6 +90,7 @@ function Chart({ data, chartedRune, fetchData }) {
   // only reversing one rune's dataSet at a time instead of reversing all 14 of them
   const runeData = splitData[chartedRune].reverse()
   const labels = extractTimeLabels(data).reverse()
+  const isMobile = React.useContext(ResponsiveContext)
   const chartData = {
     labels,
     datasets: [
@@ -100,8 +104,8 @@ function Chart({ data, chartedRune, fetchData }) {
   }
 
   return (
-    <Box w="100%" h="100%">
-      <Line data={chartData} options={options(chartedRune, runeData)} width="90%" height="80%" />
+    <Box w="100%" h="100%" >
+      <Line data={chartData} options={options(chartedRune, runeData, isMobile)} width="90%" height="80%" />
       <Center padding="20px" display="flex" flexDirection="column">
         <Text fontFamily="Exocet" fontSize="xl">Timeframe</Text>
         <TimeFrameRadio fetchData={fetchData} />
