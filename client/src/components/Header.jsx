@@ -10,12 +10,13 @@ import {
   PopoverArrow,
 
 } from '@chakra-ui/react'
-import { useMediaQuery } from 'react-responsive'
+import ResponsiveContext from './ResponsiveContext'
 import { LinkIcon } from '@chakra-ui/icons'
 
 const CinzText = ({ children, ...restProps }) => <Text {...restProps} fontFamily="Cinzel">{children}</Text>
 
-const Header = ({ isMobile }) => {
+const Header = () => {
+  const isMobile = React.useContext(ResponsiveContext)
   const responsiveHeader = {
     mobile: {
       w: '100%',

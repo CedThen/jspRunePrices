@@ -11,12 +11,13 @@ import {
 } from '@chakra-ui/react'
 import PriceRow from './PriceRow'
 import { displayLocalTime } from '../services/helperFx'
+import ResponsiveContext from './ResponsiveContext'
 
 
 const HeaderCell = ({ children, ...restProps }) =>
-  (<Th fontFamily="ExocetBold" fontSize="lg" fontWeight="light" border='1px' {...restProps}><Text fontSize="xl" textAlign="center">{children}</Text></Th>)
+  (<Th fontFamily="ExocetBold" fontSize="sm" fontWeight="light" border='1px' {...restProps}><Text fontSize="sm" textAlign="center">{children}</Text></Th>)
 
-const Prices = ({ isMobile, data, onRowClick, chartedRune }) => {
+const Prices = ({ data, onRowClick, chartedRune }) => {
   const { runeprices, createdAt } = data[0]
   const { runeprices: prevRuneprices } = data[1]
 
