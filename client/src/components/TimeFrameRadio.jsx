@@ -22,6 +22,10 @@ const TimeFrameRadioCard = (props) => {
         // _focus={{
         //   boxShadow: 'outline',
         // }}
+        _hover={{
+          bg: 'brand.lightGrey',
+          color: 'white',
+        }}
         px={5}
         py={3}
       >
