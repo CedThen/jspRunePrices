@@ -22,4 +22,4 @@ yarn-error.log*
 /client/node_modules
 # /client/build
 
-secrets.js
+# secrets.js
