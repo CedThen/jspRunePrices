@@ -2,8 +2,9 @@
 const { RunePrice } = require('./Models')
 const mongoose = require('mongoose')
 const { dbConnectionString } = require('../../secrets.js')
-const uri = process.env.MONGODB_URI || dbConnectionString
 
+const uri = process.env.MONGODB_URI || dbConnectionString
+console.log('process env', process.env.MONGODB_URI)
 // read  runePrice data
 async function retrieveLatest() {
   await mongoose.connect(uri);
