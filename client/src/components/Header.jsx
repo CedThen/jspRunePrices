@@ -38,7 +38,7 @@ const Header = () => {
 
   return (
     <Box
-      {...responsiveHeader(isMobile)}
+      {...responsiveHeader()}
     >
       <a href="https://forums.d2jsp.org/forum.php?f=268&c=2">
         <Text fontFamily="Exocet" fontSize="20" ><LinkIcon /> d2Jsp</Text>
