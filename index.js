@@ -10,9 +10,10 @@ const { flattenAvgs, cleanData, processData, } = require('./server/services/serv
 const port = process.env.PORT || 8080
 const MILLISECONDS_PER_HOUR = 3600000
 
-const scriptPath = './server/scrapingScript/bsJsp.py'
+// const scriptPath = './server/scrapingScript/bsJsp.py'
+const scriptPath = './bsJsp.py'
 const uri = process.env.MONGODB_URI || null
-console.log(`uri`, uri)
+// console.log(`uri`, uri)
 app.use(cors())
 
 const runScraper = async () => {
